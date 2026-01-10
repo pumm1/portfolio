@@ -1,41 +1,25 @@
 import { useEffect, useState } from "react"
 import  cyberpunkImg  from './assets/cyberpunk.png'
 import  mediaImg  from './assets/media.png'
-import './App.css'
+import githubImg from './assets/github-mark.svg'
 
-const LoremIpsum = ({}) => 
-  <>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a dignissim ligula. Fusce pulvinar nulla porta feugiat scelerisque. Quisque eu pellentesque augue, lobortis maximus tortor. Integer vel feugiat orci. Phasellus egestas, quam quis fringilla interdum, nisl eros euismod nisl, eget molestie arcu magna nec ex. Vivamus non maximus quam. Vivamus vel enim pellentesque, luctus nunc in, commodo augue. Etiam id ultrices erat.
-    </p>
-    <p>
-      Morbi magna nisi, auctor ac ante non, eleifend luctus diam. In sollicitudin ligula sed purus pretium, ut aliquam ipsum suscipit. Donec sagittis faucibus porttitor. Curabitur eget quam velit. Nunc ac suscipit arcu, sed convallis dolor. Nullam sapien ligula, accumsan a dolor id, volutpat convallis leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-    </p>
-    <p>
-      Sed quis justo posuere, hendrerit elit nec, congue urna. Integer consequat rutrum nisl sed elementum. Nulla eget volutpat lacus. Morbi euismod nisl in augue vulputate lacinia. Duis id nibh vitae ligula tincidunt cursus at quis metus. Proin in mauris sed lorem ullamcorper laoreet. Aliquam ut ipsum a nibh euismod posuere. Quisque eget feugiat ligula. Nulla eu eros efficitur, ornare magna sed, tempor augue. Vestibulum in viverra tellus, et suscipit tortor. Sed ullamcorper vulputate lectus, at sollicitudin metus pretium ullamcorper. Suspendisse in mauris at mauris consectetur rutrum eget varius augue.
-    </p>
-    <p>
-      Sed scelerisque, augue in porttitor pellentesque, odio sem feugiat lacus, at blandit massa purus in arcu. Nullam rutrum scelerisque mi, in tristique nulla pharetra ac. Donec sit amet pretium mauris, et tincidunt nibh. Phasellus tincidunt metus quam, eu varius arcu pulvinar quis. Nulla vestibulum euismod consectetur. Nullam eu lorem nulla. Aenean lobortis blandit dolor, at placerat neque ornare id. Etiam consequat feugiat varius. Curabitur sodales tellus quis pellentesque porta.
-    </p>
-    <p>
-      Proin luctus quam a ex dignissim, id commodo augue consequat. Suspendisse ultricies eros non erat auctor fringilla. Donec venenatis varius mauris. Vivamus id porta tellus. Sed venenatis in dui non feugiat. Pellentesque sollicitudin, leo eget feugiat congue, sapien lacus luctus sem, et elementum lorem nulla at turpis. Mauris pellentesque, enim a fringilla aliquam, odio neque tincidunt ipsum, vitae ullamcorper augue tortor vitae libero. Mauris placerat turpis et justo posuere, non vestibulum nulla dapibus. Vivamus blandit sapien nec risus vulputate, et lacinia lorem feugiat. 
-    </p>
-  </>
+import './App.css'
 
 interface PageContentProps  {
   content: React.JSX.Element
   imageSrc?: string
   reverse?: boolean
+  roundedImg?: boolean
 }
 
-const Page = ({ content, imageSrc, reverse }: PageContentProps) => 
+const Page = ({ content, imageSrc, reverse, roundedImg }: PageContentProps) => 
   <div className={`pageContainer ${reverse ? "reverse" : ""}`}>
     <div className="page">
       {content}
     </div>
     {imageSrc && 
       <div className='imageContainer'>
-        <img className='image' src={imageSrc}/>
+        <img className='image' src={imageSrc} style={roundedImg ? {borderRadius: '50%'} : {}}/>
       </div>
     }
   </div>
@@ -51,26 +35,52 @@ const ListedItems = ({items}: ListedItemsProps) =>
 
 const CyberpunkProject = ({}) => {
   const structParts = [
-    'Flask for REST API (Python)',
-    'Postgres SQL database for storing all the data',
-    "React/Typescript UI",
-    "Configured also to be dockerized"
+    "Flask-based REST API (Python)",
+    "PostgreSQL database for persistent game data",
+    "React + TypeScript frontend",
+    "Fully dockerized development and deployment setup"
+  ]
+
+  const features = [
+    'Manual and randomized character creation',
+    'Tools to check if attack hits based on rolled result and distance',
+    'Keeping track of campaign gigs and events',
+    'Campaign mind map'
   ]
 
   return(
     <>
-      <a href='https://github.com/pumm1/cyber'><h2>Cyberpunk 2020 referee tool</h2></a>
+      <a href='https://github.com/pumm1/cyber' className="linkAndImageContainer">
+        <img src={githubImg} width={40} height={40} />
+        <h2>Cyberpunk 2020 referee tool</h2>
+      </a>
       <p>
-        <a href='https://en.wikipedia.org/wiki/Mike_Pondsmith'>Mike Pondsmith</a> created a table top role playing game (TTRPG) that has captivated many players for years now. The action packed game has a lot of things to keep track of,
-        lots of rules to keep in mind and a lot of math to do on the fly, which can break the flow of an exciting game. As a solution, I decided to create a tool to help the referee 
-        keep track of multiple chracters, create characters on the fly with randomized stats and equipment, see important tables quickly and to make some dice roll results faster to check.
+        <a href="https://en.wikipedia.org/wiki/Mike_Pondsmith">Mike Pondsmith</a>'s
+        Cyberpunk 2020 is a tabletop role-playing game that offers deep mechanics,
+        rich world-building, and fast-paced combat. Running the game, however,
+        requires referees to constantly track characters, rules, tables, and
+        dice roll outcomes — often interrupting the flow of play.
       </p>
+
       <p>
-        The idea of the project is to follow the official rule book as much as possible and make the UI also look like what's found in the rule book, including the characater sheet, thus the retro black-and-white look.
+        To address this, I built a referee-focused tool designed to streamline
+        common tasks during a session. The application allows referees to manage
+        multiple characters, generate new characters on the fly with randomized
+        stats and equipment, quickly reference important rule tables, and resolve
+        dice rolls more efficiently.
       </p>
+
+      <h3>Features</h3>
+      <ListedItems items={features}/>
+
       <p>
-        Project structure:
+        A core design goal was fidelity to the original rulebook. Both the
+        underlying logic and the UI closely follow the official rules, while
+        visually echoing the black-and-white, retro aesthetic of the original
+        character sheets and source material.
       </p>
+
+      <h3>Structure</h3>
       <ListedItems items={structParts} />
     </>
   )
@@ -78,33 +88,104 @@ const CyberpunkProject = ({}) => {
 
 const MediaProject = ({}) => {
   const structParts = [
-    'Flask for REST API (Python)',
-    'MongoDB for saving scanned media and tags',
-    "React/Typescript UI that's turned into an Electron app (to allow accessing files through the UI)",
+    "Flask-based REST API (Python)",
+    "MongoDB for storing scanned media metadata and user-defined tags",
+    "Redis-Cache for public data fetched from IMDB",
+    "React + TypeScript frontend packaged as an Electron application to allow local file system access"
+  ]
+
+  const features = [
+    'Scan configured folders for new media files',
+    'Search media by name',
+    'Configure custom tags for scanned items to filter by',
+    'See recommendations based on similar tags when opening media title for more details',
+    'See some data from IMDB'
   ]
 
   return (
     <>
-      <a href='https://github.com/pumm1/media'><h2>Simple media library manager</h2></a>
+      <a href='https://github.com/pumm1/media' className="linkAndImageContainer">
+        <img src={githubImg} width={40} height={40} />
+        <h2>Media library manager</h2>
+      </a>
       <p>
-        This project allows user to keep track of own media library; scan configured folders for media updates, 
-        tag them as wanted and also have a nice UI to browse media saved in database.
+        This project is a lightweight desktop application for managing a personal
+        media library. It scans user-configured folders for media files, keeps the
+        database in sync as files change, and allows users to organize their
+        collection using custom tags.
       </p>
+
+      <h3>Features</h3>
+      <ListedItems items={features}/>
+      
       <p>
-        Project structure:
+        The application provides a clean UI for browsing and filtering media stored
+        in the database, while running locally to safely access files on the user's
+        system.
       </p>
+
+      <h3>Structure</h3>
       <ListedItems items={structParts} />
     </>
   )
 }
+
+interface HighlightedItemsProps {
+  label: string
+  items: string[]
+}
+const HighlightedItems = ({ label, items }: HighlightedItemsProps) => 
+  <span className="highlightedPartContainer">
+    <b>{label}</b>:
+    {' '}
+    {items.join(', ')}
+  </span>
+
+const AboutMe = ({}) => {
+  const techList = [
+    'Scala',
+    'Python',
+    'Postgres',
+    'MongoDB',
+    'React/TypeScript',
+    'Git',
+    'Docker'
+  ]
+
+  return(
+    <>
+      <h2>About me</h2>
+      <p>
+        Software engineer with 7+ years of professional experience, interested in system design, tooling, and pragmatic engineering.
+      </p>
+      <HighlightedItems label="Languages" items={['Scala', 'Python', 'React/TypeScript']}/>
+      <HighlightedItems label="Backend" items={['PostgreSQL', 'Flask', 'MongoDB']}/>
+      <HighlightedItems label="Infrastructure" items={['Docker']}/>
+      <a href='https://github.com/pumm1' className="linkAndImageContainer">
+        <img src={githubImg} width={40} height={40} />
+        <h2>Github</h2>
+      </a>
+      <p>
+        Scroll down for a quick look at my own projects ↓
+      </p>
+    </>
+  )
+}
+  
   
 
 type Section = {
   content: React.JSX.Element
   imageSrc?: string
+  roundedImg?: boolean
 }
 
 const sections: Section[] = [
+  {
+    content: <AboutMe />,
+    imageSrc: 'https://avatars.githubusercontent.com/u/22749461?v=4',
+    roundedImg: true
+  },
   {
     content: <CyberpunkProject />,
     imageSrc: cyberpunkImg
@@ -142,7 +223,7 @@ function App() {
       }
 
       setLocked(true)
-      setTimeout(() => setLocked(false), 600)
+      setTimeout(() => setLocked(false), 800)
     }
 
     window.addEventListener("wheel", onWheel, { passive: true })
@@ -163,6 +244,7 @@ function App() {
             content={section.content}
             imageSrc={section.imageSrc}
             reverse={index % 2 === 1}
+            roundedImg={section.roundedImg}
           />
         </div>
       </div>
