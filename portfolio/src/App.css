@@ -37,6 +37,11 @@
 .pageContainer {
   display: flex
 }
+
+.pageContainer.reverse {
+  flex-direction: row-reverse
+}
+
 .page {
   max-width: 60em;
 }

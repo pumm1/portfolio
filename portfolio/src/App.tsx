@@ -25,10 +25,11 @@ const LoremIpsum = ({}) =>
 interface PageContentProps  {
   content: React.JSX.Element
   imageSrc?: string
+  reverse?: boolean
 }
 
-const Page = ({ content, imageSrc }: PageContentProps) => 
-  <div className='pageContainer'>
+const Page = ({ content, imageSrc, reverse }: PageContentProps) => 
+  <div className={`pageContainer ${reverse ? "reverse" : ""}`}>
     <div className="page">
       {content}
     </div>
@@ -39,8 +40,7 @@ const Page = ({ content, imageSrc }: PageContentProps) => 
     }
   </div>
 
-const Cyberpunk = ({}) => {
-  const content = (
+const CyberpunkContent = ({}) => 
   <>
     <a href='https://github.com/pumm1/cyber'><h2>Cyberpunk 2020 referee tool</h2></a>
     <p>
@@ -51,28 +51,32 @@ const Cyberpunk = ({}) => {
     <p>
       The idea of the project is to follow the official rule book as much as possible and make the UI also look like what's found in the rule book, including the characater sheet, thus the retro black-and-white look.
     </p>
-  <LoremIpsum />
+    <LoremIpsum />
   </>
-)
 
+const MediaContent = ({})=> 
+  <>
+    <a href='https://github.com/pumm1/media'><h2>Simple media library manager</h2></a>
+    <LoremIpsum />
+  </>
 
-  return <Page content={content} imageSrc={cyberpunkImg}/>
+type Section = {
+  content: React.JSX.Element
+  imageSrc?: string
 }
 
-const Media = ({})=> {
-  const content = (
-    <>
-      <a href='https://github.com/pumm1/media'><h2>Simple media library manager</h2></a>
-      <LoremIpsum />
-    </>
-  )
-
-  return <Page content={content} imageSrc={mediaImg}/>
-}
+const sections: Section[] = [
+  {
+    content: <CyberpunkContent />,
+    imageSrc: cyberpunkImg
+  },
+  {
+    content: <MediaContent />,
+    imageSrc: mediaImg
+  }
+]
 
 function App() {
-  const sections = [<Cyberpunk />, <Media />]
-
   const [index, setIndex] = useState(0)
   const [locked, setLocked] = useState(false)
 
@@ -106,6 +110,8 @@ function App() {
     return () => window.removeEventListener("wheel", onWheel)
   }, [index, locked])
 
+  const section = sections[index]
+
   return (
     <>
       <span className="progressBar" style={{ height: `${((index + 1)/ sections.length) * 100}%` }} />
@@ -114,7 +120,11 @@ function App() {
           key={index}
           className="section fade"
         >
-          {sections[index]}
+          <Page
+            content={section.content}
+            imageSrc={section.imageSrc}
+            reverse={index % 2 === 1}
+          />
         </div>
       </div>
     </>
