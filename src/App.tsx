@@ -55,8 +55,7 @@ const CyberpunkProject = ({}) => {
         <h2>Cyberpunk 2020 referee tool</h2>
       </a>
       <p>
-        <a href="https://en.wikipedia.org/wiki/Mike_Pondsmith">Mike Pondsmith</a>'s
-        Cyberpunk 2020 is a tabletop role-playing game that offers deep mechanics,
+        Cyberpunk 2020 is a TTRPG that offers deep mechanics,
         rich world-building, and fast-paced combat. Running the game, however,
         requires referees to constantly track characters, rules, tables, and
         dice roll outcomes — often interrupting the flow of play.
@@ -64,10 +63,7 @@ const CyberpunkProject = ({}) => {
 
       <p>
         To address this, I built a referee-focused tool designed to streamline
-        common tasks during a session. The application allows referees to manage
-        multiple characters, generate new characters on the fly with randomized
-        stats and equipment, quickly reference important rule tables, and resolve
-        dice rolls more efficiently.
+        common tasks during a session.
       </p>
 
       <h3>Features</h3>
@@ -135,7 +131,7 @@ interface HighlightedItemsProps {
   items: string[]
 }
 const HighlightedItems = ({ label, items }: HighlightedItemsProps) => 
-  <span className="flexBox">
+  <span className="highlightedItems">
     <b>{label}</b>:
     {' '}
     {items.join(', ')}
@@ -223,9 +219,9 @@ function App() {
   const section = sections[index]
 
   return (
-    <>
+    <div className="main">
       <span className="flexBox">
-        <span className="progressBar" style={{ height: `${((index + 1)/ sections.length) * 100}%` }} />
+        <span className="progressBar" style={{ height: `${((index + 1)/ (sections.length + 1)) * 100}%` }} />
         <div className="viewport">
           <div
             key={index}
@@ -234,13 +230,12 @@ function App() {
             <Page
               content={section.content}
               imageSrc={section.imageSrc}
-              reverse={index % 2 === 1}
               roundedImg={section.roundedImg}
             />
           </div>
         </div>
       </span>
-    </>
+    </div>
   )
 }
 

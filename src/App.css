@@ -8,6 +8,15 @@ a:hover {
   color: var(--secondary-red);
 }
 
+p {
+  max-width: 50vh;
+  min-width: 30vh;
+}
+
+.main {
+  margin: 8px 0;
+}
+
 .pageContainer {
   display: flex;
 }
@@ -28,17 +37,18 @@ a:hover {
 }
 
 .imageContainer {
-  margin: 5rem 0;
+  margin: 8em 0;
   float: right;
 }
 
 .image {
   padding: 0 2em;
-  max-width: 30em;
-  max-height: 30em;
+  max-width: 30vh;
+  max-height: 30vh;
 }
 
 .viewport {
+  padding: 2em 0;
   height: 100vh;
   overflow: hidden;
 }
@@ -48,9 +58,9 @@ a:hover {
   z-index: 99999; 
   background-color: var(--main-red);
   width: 1em;
-  display: inline-block;
   transition: height 200ms ease-in;
   border-radius: 8px;
+  transform: translateY(6em);
 }
 
 .section {
@@ -59,6 +69,12 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.highlightedItems {
+  display: flex;
+  max-width: 50vh;
+  min-width: 30vh;
 }
 
 .flexBox {
