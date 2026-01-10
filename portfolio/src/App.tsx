@@ -40,25 +40,64 @@ const Page = ({ content, imageSrc, reverse }: PageContentProps) => 
     }
   </div>
 
-const CyberpunkContent = ({}) => 
-  <>
-    <a href='https://github.com/pumm1/cyber'><h2>Cyberpunk 2020 referee tool</h2></a>
-    <p>
-      <a href='https://en.wikipedia.org/wiki/Mike_Pondsmith'>Mike Pondsmith</a> created a table top role playing game (TTRPG) that has captivated many players for years now. The action packed game has a lot of things to keep track of,
-      lots of rules to keep in mind and a lot of math to do on the fly, which can break the flow of an exciting game. As a solution, I decided to create a tool to help the referee 
-      keep track of multiple chracters, create characters on the fly with randomized stats and equipment, see important tables quickly and to make some dice roll results faster to check.
-    </p>
-    <p>
-      The idea of the project is to follow the official rule book as much as possible and make the UI also look like what's found in the rule book, including the characater sheet, thus the retro black-and-white look.
-    </p>
-    <LoremIpsum />
-  </>
+interface ListedItemsProps {
+  items: string[]
+}
 
-const MediaContent = ({})=> 
-  <>
-    <a href='https://github.com/pumm1/media'><h2>Simple media library manager</h2></a>
-    <LoremIpsum />
-  </>
+const ListedItems = ({items}: ListedItemsProps) =>
+  <ul>
+    {items.map(i => <li>{i}</li>)}
+  </ul>
+
+const CyberpunkProject = ({}) => {
+  const structParts = [
+    'Flask for REST API (Python)',
+    'Postgres SQL database for storing all the data',
+    "React/Typescript UI",
+    "Configured also to be dockerized"
+  ]
+
+  return(
+    <>
+      <a href='https://github.com/pumm1/cyber'><h2>Cyberpunk 2020 referee tool</h2></a>
+      <p>
+        <a href='https://en.wikipedia.org/wiki/Mike_Pondsmith'>Mike Pondsmith</a> created a table top role playing game (TTRPG) that has captivated many players for years now. The action packed game has a lot of things to keep track of,
+        lots of rules to keep in mind and a lot of math to do on the fly, which can break the flow of an exciting game. As a solution, I decided to create a tool to help the referee 
+        keep track of multiple chracters, create characters on the fly with randomized stats and equipment, see important tables quickly and to make some dice roll results faster to check.
+      </p>
+      <p>
+        The idea of the project is to follow the official rule book as much as possible and make the UI also look like what's found in the rule book, including the characater sheet, thus the retro black-and-white look.
+      </p>
+      <p>
+        Project structure:
+      </p>
+      <ListedItems items={structParts} />
+    </>
+  )
+}
+
+const MediaProject = ({}) => {
+  const structParts = [
+    'Flask for REST API (Python)',
+    'MongoDB for saving scanned media and tags',
+    "React/Typescript UI that's turned into an Electron app (to allow accessing files through the UI)",
+  ]
+
+  return (
+    <>
+      <a href='https://github.com/pumm1/media'><h2>Simple media library manager</h2></a>
+      <p>
+        This project allows user to keep track of own media library; scan configured folders for media updates, 
+        tag them as wanted and also have a nice UI to browse media saved in database.
+      </p>
+      <p>
+        Project structure:
+      </p>
+      <ListedItems items={structParts} />
+    </>
+  )
+}
+  
 
 type Section = {
   content: React.JSX.Element
@@ -67,11 +106,11 @@ type Section = {
 
 const sections: Section[] = [
   {
-    content: <CyberpunkContent />,
+    content: <CyberpunkProject />,
     imageSrc: cyberpunkImg
   },
   {
-    content: <MediaContent />,
+    content: <MediaProject />,
     imageSrc: mediaImg
   }
 ]
