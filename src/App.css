@@ -9,7 +9,7 @@ a:hover {
 }
 
 .pageContainer {
-  display: flex
+  display: flex;
 }
 
 .pageContainer.reverse {
@@ -17,6 +17,7 @@ a:hover {
 }
 
 .page {
+  margin: 2em;
   max-width: 60em;
 }
 
@@ -33,7 +34,8 @@ a:hover {
 
 .image {
   padding: 0 2em;
-  max-width: 40em;
+  max-width: 30em;
+  max-height: 30em;
 }
 
 .viewport {
@@ -48,6 +50,7 @@ a:hover {
   width: 1em;
   display: inline-block;
   transition: height 200ms ease-in;
+  border-radius: 8px;
 }
 
 .section {
@@ -58,7 +61,7 @@ a:hover {
   justify-content: center;
 }
 
-.highlightedPartContainer {
+.flexBox {
   display: flex
 }
 

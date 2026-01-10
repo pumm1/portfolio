@@ -135,7 +135,7 @@ interface HighlightedItemsProps {
   items: string[]
 }
 const HighlightedItems = ({ label, items }: HighlightedItemsProps) => 
-  <span className="highlightedPartContainer">
+  <span className="flexBox">
     <b>{label}</b>:
     {' '}
     {items.join(', ')}
@@ -224,20 +224,22 @@ function App() {
 
   return (
     <>
-      <span className="progressBar" style={{ height: `${((index + 1)/ sections.length) * 100}%` }} />
-      <div className="viewport">
-        <div
-          key={index}
-          className="section fade"
-        >
-          <Page
-            content={section.content}
-            imageSrc={section.imageSrc}
-            reverse={index % 2 === 1}
-            roundedImg={section.roundedImg}
-          />
+      <span className="flexBox">
+        <span className="progressBar" style={{ height: `${((index + 1)/ sections.length) * 100}%` }} />
+        <div className="viewport">
+          <div
+            key={index}
+            className="section fade"
+          >
+            <Page
+              content={section.content}
+              imageSrc={section.imageSrc}
+              reverse={index % 2 === 1}
+              roundedImg={section.roundedImg}
+            />
+          </div>
         </div>
-      </div>
+      </span>
     </>
   )
 }
