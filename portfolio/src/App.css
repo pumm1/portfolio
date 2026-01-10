@@ -1,0 +1,87 @@
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.pageContainer {
+  display: flex
+}
+.page {
+  max-width: 60em;
+}
+
+.imageContainer {
+  margin: 5rem 0;
+  float: right;
+}
+
+.image {
+  padding: 0 2em;
+  max-width: 40em;
+}
+
+.viewport {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: absolute;
+  z-index: 99999; 
+  background-color: red;
+  width: 1em;
+  display: inline-block;
+}
+
+.section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fade {
+  animation: fade 1000ms ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
