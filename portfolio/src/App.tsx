@@ -142,16 +142,6 @@ const HighlightedItems = ({ label, items }: HighlightedItemsProps) =>
   </span>
 
 const AboutMe = ({}) => {
-  const techList = [
-    'Scala',
-    'Python',
-    'Postgres',
-    'MongoDB',
-    'React/TypeScript',
-    'Git',
-    'Docker'
-  ]
-
   return(
     <>
       <h2>About me</h2>
