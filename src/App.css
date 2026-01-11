@@ -9,16 +9,23 @@ a:hover {
 }
 
 p {
-  max-width: 60ch;
-  font-size: clamp(0.5rem, 1.5vw, 1rem);
+  max-width: clamp(60ch, 80vw, 90vw);
+  font-size: clamp(0.5rem, 2vmin, 1rem);
 }
 
 section {
-  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  font-size: clamp(0.75rem, 2vmin, 1rem);
 }
 
 .main {
   margin: 4px 0;
+}
+
+.highlightedItems {
+  display: flex;
+  max-width: 50vh;
+  min-width: 30vh;
+  font-size: clamp(0.5rem, 2vmin, 1rem);
 }
 
 .page {
@@ -64,6 +71,12 @@ section {
   }
 }
 
+@media (max-height: 700px) {
+  .page aside {
+    display: none;
+  }
+}
+
 
 .progressBar {
   position: absolute;
@@ -80,13 +93,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.highlightedItems {
-  display: flex;
-  max-width: 50vh;
-  min-width: 30vh;
-  font-size: clamp(0.75rem, 1.5vw, 1.5rem);
 }
 
 .flexBox {
