@@ -17,15 +17,11 @@ p {
   margin: 8px 0;
 }
 
-.pageContainer {
-  display: flex;
-}
-
 .page {
   padding: 0 0 0 2rem;
   display: grid;
   grid-template-columns: 1fr minmax(200px, 40%);
-  gap: 3rem;
+  gap: 1rem;
   align-items: center;
 }
 

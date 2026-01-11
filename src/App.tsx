@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import  cyberpunkImg  from './assets/cyberpunk.png'
-import  mediaImg  from './assets/media.png'
+import cyberpunkImg  from './assets/cyberpunk.png'
+import mediaImg  from './assets/media.png'
 import githubImg from './assets/github-mark.svg'
 
 import './App.css'
