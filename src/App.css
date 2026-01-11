@@ -9,12 +9,12 @@ a:hover {
 }
 
 p {
-  max-width: clamp(60ch, 80vw, 90vw);
-  font-size: clamp(0.5rem, 2vmin, 1rem);
+  max-width: clamp(60vw, 90vw, 100rem);
+  font-size: clamp(0.4rem, 1.5vmin, 2rem);
 }
 
 section {
-  font-size: clamp(0.75rem, 2vmin, 1rem);
+  font-size: clamp(0.4rem, 1.5vmin, 2rem);
 }
 
 .main {
@@ -25,7 +25,7 @@ section {
   display: flex;
   max-width: 50vh;
   min-width: 30vh;
-  font-size: clamp(0.5rem, 2vmin, 1rem);
+  font-size: clamp(0.4rem, 1.5vmin, 2rem);
 }
 
 .page {
@@ -65,13 +65,13 @@ section {
   overflow: hidden;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 30vw) {
   .page aside {
     display: none;
   }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 800px) {
   .page aside {
     display: none;
   }
