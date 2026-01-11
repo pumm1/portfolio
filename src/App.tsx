@@ -8,21 +8,20 @@ import './App.css'
 interface PageContentProps  {
   content: React.JSX.Element
   imageSrc?: string
-  reverse?: boolean
   roundedImg?: boolean
 }
 
-const Page = ({ content, imageSrc, reverse, roundedImg }: PageContentProps) => 
-  <div className={`pageContainer ${reverse ? "reverse" : ""}`}>
-    <div className="page">
+const Page = ({ content, imageSrc, roundedImg }: PageContentProps) => 
+  <section className="page">
+    <article>
       {content}
-    </div>
+    </article>
     {imageSrc && 
-      <div className='imageContainer'>
+      <aside>
         <img className='image' src={imageSrc} style={roundedImg ? {borderRadius: '50%'} : {}}/>
-      </div>
+      </aside>
     }
-  </div>
+  </section>
 
 interface ListedItemsProps {
   items: string[]
@@ -219,22 +218,24 @@ function App() {
   const section = sections[index]
 
   return (
-    <div className="main">
-      <span className="flexBox">
-        <span className="progressBar" style={{ height: `${((index + 1)/ (sections.length + 1)) * 100}%` }} />
-        <div className="viewport">
-          <div
-            key={index}
-            className="section fade"
-          >
-            <Page
-              content={section.content}
-              imageSrc={section.imageSrc}
-              roundedImg={section.roundedImg}
-            />
+    <div className="gridContainer">
+      <span className="progressBar" style={{ height: `${(((index + 1))/ (sections.length)) * 100}vh` }} />
+      <div className="main">
+        <span className="flexBox">
+          <div className="viewport">
+            <div
+              key={index}
+              className="section fade"
+            >
+              <Page
+                content={section.content}
+                imageSrc={section.imageSrc}
+                roundedImg={section.roundedImg}
+              />
+            </div>
           </div>
-        </div>
-      </span>
+        </span>
+      </div>
     </div>
   )
 }

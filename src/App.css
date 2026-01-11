@@ -21,14 +21,19 @@ p {
   display: flex;
 }
 
-.pageContainer.reverse {
-  flex-direction: row-reverse
+.page {
+  padding: 0 0 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 40%);
+  gap: 3rem;
+  align-items: center;
 }
 
-.page {
-  margin: 2em;
-  max-width: 60em;
+.gridContainer {
+  display: grid;
+  gap: 1rem;
 }
+
 
 .linkAndImageContainer {
   display: flex;
@@ -48,7 +53,6 @@ p {
 }
 
 .viewport {
-  padding: 2em 0;
   height: 100vh;
   overflow: hidden;
 }
@@ -60,12 +64,12 @@ p {
   width: 1em;
   transition: height 200ms ease-in;
   border-radius: 8px;
-  transform: translateY(6em);
+  max-height: 96vh;
 }
 
 .section {
-  height: 100%;
-  width: 100%;
+  max-height: 100vh;
+  max-width: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
