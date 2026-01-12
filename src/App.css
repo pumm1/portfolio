@@ -10,26 +10,23 @@ a:hover {
 
 p {
   max-width: clamp(60vw, 90vw, 100rem);
-  font-size: clamp(0.4rem, 1.5vmin, 2rem);
+  font-size: clamp(0.8rem, 1.6vmin, 3rem);
 }
 
 section {
-  font-size: clamp(0.4rem, 1.5vmin, 2rem);
-}
-
-.main {
-  margin: 4px 0;
+  margin: 2rem 0;
+  font-size: clamp(0.8rem, 1.6vmin, 3rem);
 }
 
 .highlightedItems {
   display: flex;
   max-width: 50vh;
   min-width: 30vh;
-  font-size: clamp(0.4rem, 1.5vmin, 2rem);
+  font-size: clamp(0.8rem, 1.6vmin, 3rem);
 }
 
 .page {
-  padding: clamp(1.5rem, 2vw, 2rem) 1.5rem;
+  padding: 1rem;
   display: grid;
   grid-template-columns: 1fr minmax(200px, 40%);
   gap: 1rem;
@@ -56,36 +53,13 @@ section {
 
 .image {
   padding: 0 2em;
-  max-width: 100%;
-  max-height: 20vh;
+  max-width: 60vw;
+  max-height: 40vh;
 }
 
 .viewport {
   height: 100vh;
   overflow: hidden;
-}
-
-@media (max-width: 30vw) {
-  .page aside {
-    display: none;
-  }
-}
-
-@media (max-height: 800px) {
-  .page aside {
-    display: none;
-  }
-}
-
-
-.progressBar {
-  position: absolute;
-  z-index: 99999; 
-  background-color: var(--main-red);
-  width: 0.5rem;
-  transition: height 200ms ease-in;
-  border-radius: 8px;
-  max-height: 96vh;
 }
 
 .section {
@@ -97,6 +71,11 @@ section {
 
 .flexBox {
   display: flex
+}
+
+.navigation {
+  margin: 1rem 0;
+  border-bottom: solid 0.2rem;
 }
 
 .fade {

@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
   font-size: 100%;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #1a1a1b;
@@ -37,14 +36,17 @@ body {
 h2 {
   font-size: clamp(0.5rem, 4vmin, 2.25rem);
   line-height: 1.25;
+  text-transform: uppercase;
 }
 
-h3{
+h3 {
   font-size: clamp(0.6rem, 1.6vmin, 2.5rem);
   line-height: 1.25;
+  text-transform: uppercase;
 }
 
 button {
+  text-transform: uppercase;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -56,7 +58,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: var(--main-red);;
 }
 button:focus,
 button:focus-visible {

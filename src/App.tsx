@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import cyberpunkImg  from './assets/cyberpunk.png'
 import mediaImg  from './assets/media.png'
 import githubImg from './assets/github-mark.svg'
@@ -12,16 +12,18 @@ interface PageContentProps  {
 }
 
 const Page = ({ content, imageSrc, roundedImg }: PageContentProps) => 
-  <section className="page">
-    <article>
-      {content}
-    </article>
-    {imageSrc && 
-      <aside>
+  <>
+    <section className="page">
+      <article>
+        {content}
+      </article>
+    </section>
+    <section>
+      {imageSrc && 
         <img className='image' src={imageSrc} style={roundedImg ? {borderRadius: '50%'} : {}}/>
-      </aside>
-    }
-  </section>
+      }
+    </section>
+  </>
 
 interface ListedItemsProps {
   items: string[]
@@ -36,7 +38,7 @@ const CyberpunkProject = ({}) => {
   const structParts = [
     "Flask-based REST API (Python)",
     "PostgreSQL database for persistent game data",
-    "React + TypeScript frontend",
+    "React/TypeScript frontend",
     "Fully dockerized development and deployment setup"
   ]
 
@@ -48,7 +50,7 @@ const CyberpunkProject = ({}) => {
   ]
 
   return(
-    <>
+    <section className="fade">
       <a href='https://github.com/pumm1/cyber' className="linkAndImageContainer">
         <img src={githubImg} width={40} height={40} />
         <h2>Cyberpunk 2020 referee tool</h2>
@@ -75,9 +77,9 @@ const CyberpunkProject = ({}) => {
         character sheets and source material.
       </p>
 
-      <h3>Structure</h3>
+      <h3>Project structure</h3>
       <ListedItems items={structParts} />
-    </>
+    </section>
   )
 }
 
@@ -86,7 +88,7 @@ const MediaProject = ({}) => {
     "Flask-based REST API (Python)",
     "MongoDB for storing scanned media metadata and user-defined tags",
     "Redis-Cache for public data fetched from IMDB",
-    "React + TypeScript frontend packaged as an Electron application to allow local file system access"
+    "React/TypeScript frontend packaged as an Electron application to allow local file system access"
   ]
 
   const features = [
@@ -98,7 +100,7 @@ const MediaProject = ({}) => {
   ]
 
   return (
-    <>
+    <section className="fade">
       <a href='https://github.com/pumm1/media' className="linkAndImageContainer">
         <img src={githubImg} width={40} height={40} />
         <h2>Media library manager</h2>
@@ -119,9 +121,9 @@ const MediaProject = ({}) => {
         system.
       </p>
 
-      <h3>Structure</h3>
+      <h3>Project structure</h3>
       <ListedItems items={structParts} />
-    </>
+    </section>
   )
 }
 
@@ -138,8 +140,7 @@ const HighlightedItems = ({ label, items }: HighlightedItemsProps) =>
 
 const AboutMe = ({}) => {
   return(
-    <>
-      <h2>About me</h2>
+    <section className="fade">
       <p>
         Software engineer with 7+ years of professional experience, interested in system design, tooling, and pragmatic engineering.
       </p>
@@ -148,94 +149,55 @@ const AboutMe = ({}) => {
       <HighlightedItems label="Infrastructure" items={['Docker']}/>
       <a href='https://github.com/pumm1' className="linkAndImageContainer">
         <img src={githubImg} width={40} height={40} />
-        <h2>Github</h2>
+        <h3>Github</h3>
       </a>
-      <p>
-        Scroll down for a quick look at my own projects ↓
-      </p>
-    </>
+    </section>
   )
 }
-  
-  
 
 type Section = {
+  title?: string
   content: React.JSX.Element
   imageSrc?: string
   roundedImg?: boolean
 }
 
-const sections: Section[] = [
-  {
-    content: <AboutMe />,
-    imageSrc: 'https://avatars.githubusercontent.com/u/22749461?v=4',
-    roundedImg: true
-  },
-  {
-    content: <CyberpunkProject />,
-    imageSrc: cyberpunkImg
-  },
-  {
-    content: <MediaProject />,
-    imageSrc: mediaImg
-  }
-]
-
-function App() {
-  const [index, setIndex] = useState(0)
-  const [locked, setLocked] = useState(false)
-
-  const validIdxValue = (i: number) => {
-    if (i < 0) {
-      return 0
-    } else if (i > sections.length - 1) {
-      return sections.length - 1
-    } else {
-      return i
+const Content = () => {
+  const projects: Section[] = [
+    {
+      title: 'About me',
+      content: <AboutMe />,
+      imageSrc: 'https://avatars.githubusercontent.com/u/22749461?v=4',
+      roundedImg: true
+    },
+    {
+      title: 'Cyberpunk 2020 Referee tool',
+      content: <CyberpunkProject />,
+      imageSrc: cyberpunkImg
+    },
+    {
+      title: 'Media library manager',
+      content: <MediaProject />,
+      imageSrc: mediaImg
     }
-  }
-
-  useEffect(() => {
-    function onWheel(e: WheelEvent) {
-      if (locked) return
-
-      if (e.deltaY > 0 && index < sections.length - 1) {
-        setIndex(i => validIdxValue(i + 1))
-      }
-
-      if (e.deltaY < 0 && index > 0) {
-        setIndex(i => validIdxValue(i - 1))
-      }
-
-      setLocked(true)
-      setTimeout(() => setLocked(false), 800)
-    }
-
-    window.addEventListener("wheel", onWheel, { passive: true })
-    return () => window.removeEventListener("wheel", onWheel)
-  }, [index, locked])
-
-  const section = sections[index]
+  ]
+  const [projectIdx, setProjectIdx] = useState<number>(0)
+  const sect = projects[projectIdx]
 
   return (
-    <div className="gridContainer">
-      <span className="progressBar" style={{ height: `${(((index + 1))/ (sections.length)) * 100}vh` }} />
-      <div className="main">
-        <span className="flexBox">
-          <div className="viewport">
-            <div
-              key={index}
-              className="section fade"
-            >
-              <Page
-                content={section.content}
-                imageSrc={section.imageSrc}
-                roundedImg={section.roundedImg}
-              />
-            </div>
-          </div>
-        </span>
+    <section>
+      <div className="navigation">
+        {projects.map((project, idx) => <button onClick={() => setProjectIdx(idx)}>{project.title ?? ''}</button>)}
       </div>
+      <Page content={sect.content} imageSrc={sect.imageSrc} roundedImg={sect.roundedImg}/>
+    </section>
+  )
+}
+
+function App() {
+  return (
+    <div className="gridContainer">
+      <Content />
     </div>
   )
 }
